@@ -58,12 +58,15 @@ MYSQL_ROOT_PASSWORD=root2025
 MYSQL_PASSWORD=develop2025
 MYSQL_SERVER=db
 
-# Puertos expuestos
 PHP_PORT=5000
+
+# Configuración de PHPMyAdmin
+PMA_HOST=mysql
+PMA_USER=hack_user
+PMA_PASSWORD=develop2025
 PMA_PORT=5005
 
-# phpMyAdmin
-PMA_HOST=db
+
 
 ```
 ---

@@ -1,19 +1,16 @@
 <?php
-$host = 'db';
-$db   = 'hackaton_db';
-$user = 'hack_user';
-$pass = 'develop2025';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
+require_once __DIR__ . "/models/bd_connection.php";
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-    echo "✅ Conexión exitosa a la base de datos.";
-} catch (PDOException $e) {
-    echo "❌ Error de conexión: " . $e->getMessage();
+    $db = new Database();
+    $pdo = $db->getConnection();
+
+    // Probar una consulta simple
+    $stmt = $pdo->query("SELECT NOW() as fecha");
+    $row = $stmt->fetch();
+
+    echo "✅ Conexión exitosa a la base de datos.<br>";
+    echo "Servidor respondió con fecha/hora: " . $row['fecha'];
+} catch (Exception $e) {
+    echo "❌ Error: " . $e->getMessage();
 }
