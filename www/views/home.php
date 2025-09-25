@@ -20,6 +20,8 @@ if (empty($_SESSION["id"])) {
     <main>
         <p>Sistema para la toma de asistencia digitalizada</p><br>
         <a href="../controllers/controller_logout.php" >Salir</a>
+        <br>
+        <a href="upload.php">Subir Archivo</a>
     </main>
 </body>
 </html>
