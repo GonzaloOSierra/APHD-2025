@@ -12,7 +12,7 @@ class Database {
 
     public function __construct() {
         
-        $this->host = getenv("MYSQL_SERVER") ?: "mysql";
+        $this->host = getenv("MYSQL_SERVER") ?: "db";
         $this->dbname = getenv("MYSQL_DATABASE") ?: "hackaton_db";
         $this->username = getenv("MYSQL_USER") ?: "hack_2025";
         $this->password = getenv("MYSQL_PASSWORD") ?: "develop2025";

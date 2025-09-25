@@ -8,7 +8,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes: 
-      - ./dump/:/var/lib/mysql
+      - db_data:/var/lib/mysql                 # volumen persistente para MySQL
+      - ./dump:/docker-entrypoint-initdb.d     # solo para importar .sql
     container_name: db
     networks:
       - app-network
@@ -39,11 +40,17 @@ services:
       - PMA_HOST=db
       - PMA_PORT=3306
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - PMA_FORCE_SSL=false
     networks:
       - app-network
+    volumes:
+      - ./phpmyadmin_config/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
 
 networks:
   app-network:
-    name: aphd-2025_app-network
     driver: bridge
+
+volumes:
+  db_data:
+
 
