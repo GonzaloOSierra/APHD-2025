@@ -27,13 +27,13 @@ if (!empty($_POST["ingresar"])) {
                     header("Location: ../views/home.php");
                     exit;
         } else {
-                echo "<div style='color:red;'>❌ Usuario o contraseña incorrectos</div>";
+                $error_message = "Clave incorrecta. Intente nuevamente.";
             }
         } catch (Exception $e) {
             echo "<div style='color:red;'>Error: " . $e->getMessage() . "</div>";
         }
     } else {
-        echo "<div style='color:red;'>⚠️ Campos vacíos</div>";
+        $error_message = "Campos Vacios, ingrese los datos.";
     }
 }
 ?>
