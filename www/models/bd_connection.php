@@ -27,7 +27,8 @@ class Database {
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                 ]);
             } catch (PDOException $e) {
-                throw new RuntimeException("Error de conexión a la base de datos: " . $e->getMessage());
+                error_log("[" . date("Y-m-d H:i:s") . "] DB Error: " . $e->getMessage());
+            throw new RuntimeException("Error de conexión a la base de datos. Ver logs para más detalle.");
             }
         }
         return $this->pdo;
